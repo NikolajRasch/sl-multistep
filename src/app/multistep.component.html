@@ -1,0 +1,11 @@
+<i class="fas fa-check"></i>
+<ul class="list-unstyled multi-steps">
+	<ng-template ngFor let-step [ngForOf]="steps" let-index="index">
+		<li [ngClass]="{'is-active': step.IsActive, 'loading-step': step.IsLoading}" [style.cursor]="step.IsActive ? 'default' : 'pointer'"
+		 (click)="goToStep(index)">
+			<bdi class="steps-text">{{step.Name}}</bdi>
+			<div class="steps-counter" *ngIf="index >= stepChosen">{{index + 1}}</div>
+			<div style="top: 6px;padding-left: 2px;" class="steps-counter" *ngIf="index < stepChosen"><i class="fas fa-check"></i></div>
+     </li>
+  </ng-template>
+</ul>

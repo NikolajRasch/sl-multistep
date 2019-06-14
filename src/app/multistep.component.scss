@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800&display=swap');
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+.steps-counter {
+	  position: absolute;
+    top: 9px;
+    left: 2px;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+.steps-text {
+	position: absolute;
+	top: 40px;
+	width: 100%;
+	text-align: center;
+	left: 0;
+}
+.multi-steps > li.is-active:before,
+.multi-steps > li.is-active ~ li:before {
+	content: ''; /* counter(stepNum) */
+	font-family: inherit;
+	font-weight: 700;
+}
+.multi-steps > li.is-active:after,
+.multi-steps > li.is-active ~ li:after {
+	background-color: #ededed;
+}
+
+.multi-steps {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+.multi-steps > li {
+	counter-increment: stepNum;
+	text-align: center;
+	display: table-cell;
+	position: relative;
+	color: #0c5ba4;
+	cursor: pointer;
+}
+.multi-steps > li:before {
+	position: absolute;
+	left: calc(50% - 18px);
+	content: '';
+	display: block;
+	margin: 0 auto 4px;
+	background-color: #fff;
+	width: 36px;
+	height: 36px;
+	line-height: 32px;
+	text-align: center;
+	font-weight: bold;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #0c5ba4;
+	border-radius: 50%;
+}
+.multi-steps > li:after {
+	content: '';
+	height: 2px;
+	width: 100%;
+	background-color: #0c5ba4;
+	position: absolute;
+	top: 19px;
+	left: 50%;
+	z-index: -1;
+}
+
+.multi-steps > li:last-child:after {
+	display: none;
+}
+.multi-steps > li.is-active:before {
+	background-color: #fff;
+	border-color: #0c5ba4;
+	transition: 250ms;
+}
+.multi-steps > li.is-active ~ li {
+	color: #808080;
+}
+.multi-steps > li.is-active ~ li:before {
+	background-color: #fff;
+	border-color: #ededed;
+	transition: 250ms;
+}
+.multi-steps > li.is-active ~ li:hover:before {
+	background-color: #fff;
+	border-color: #333;
+	transition: 250ms;
+}
+.multi-steps > li.loading-step:before {
+	background: -webkit-linear-gradient(left top, red 20%, #fff 20%);
+	border-color: red;
+	color: red;
+
+	animation-name: step-spin;
+	animation-duration: 1000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
